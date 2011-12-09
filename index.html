@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Papyrus</title>
+    <meta name="description" content="Text to hieroglyphs. What could be better?">
+    <meta name="author" content="Alexander Mackworth">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+      }
+      .hero-unit {
+        background-image: url('http://upload.wikimedia.org/wikipedia/commons/a/af/All_Gizah_Pyramids.jpg');
+        background-position: 50%, 50%;
+        background-size: cover, cover;
+      }
+      @font-face { font-family: Egypt; src: url('http://www.smartforest.com/images/EGYPT0.TTF'); } 
+      #tablet {
+          height: 144px;
+          text-align: center;
+          font-family: Egypt;
+          font-size: 72pt;
+          background-image: url('http://www.smartforest.com/images/papyrus.jpg');
+          background-size: cover, cover;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px;
+      }
+      #quote {
+        font-size: 36pt;
+
+      }
+    </style>
+    <script type="text/javascript">
+    var tablet = document.getElementById('tablet');
+    var oForm = document.forms[index];
+
+    var form = oForm.elements["textInput"];
+    function textChanged() {
+        tablet.innerHTML = form.value;
+    }
+    </script>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  </head>
+
+  <body>
+
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Papyrus</a>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+     
+      <div class="content">
+        <!-- Main hero unit for a primary marketing message or call to action -->
+        <div class="hero-unit">
+          <h1>Papyrus</h1>
+          <p>Text to hieroglyphs. Boom.</p>
+          <p><a class="btn success large" href="#form">Interested?</a></p>
+        </div>
+        <blockquote id="quote">
+  <p>Words divested of their magic are but dead hieroglyphs.</p>
+  <small>Henry Valentine Miller</small>
+</blockquote>
+<h3>So, what are these fancy Egyptian hieroglyphs?</h3>
+<p>Well, long story short, they were the pictografial writing system developed by the Ancient Egyptians thousands of years ago.  Pretty cool, no?</h3><br />
+        <div class="span">
+            <h2>Scribe Your Incantation Here</h2>
+<form><textarea id="textInput" class="xxlarge"></textarea></form>            <p><a class="btn primary" href="javascript:textChanged()">Translate</a></p><br />
+          </div>
+         <div id="tablet">
+         <br /><br /><br />AFS
+         </div>
+         <br />
+         <br />
+         
+        <footer>
+          <p>&copy; Alexander Mackworth 2011</p>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>
