@@ -18,16 +18,23 @@
         padding-top: 60px;
       }
       .hero-unit {
-        background-image: url('http://upload.wikimedia.org/wikipedia/commons/a/af/All_Gizah_Pyramids.jpg');
+       // background-image: url('http://upload.wikimedia.org/wikipedia/commons/a/af/All_Gizah_Pyramids.jpg');
+        background-image: url('http://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/800px-All_Gizah_Pyramids.jpg');
         background-position: 50%, 50%;
         background-size: cover, cover;
       }
       @font-face { font-family: Egypt; src: url('http://www.smartforest.com/images/EGYPT0.TTF'); } 
       #tablet {
-          height: 144px;
+          border-style: solid;
+          border-size: 1px;
+          height: 300%
+          margin: 10px 30px;
+          line-height: 200%;
+          vertical-align: middle;
+          word-wrap: break-word;
           text-align: center;
           font-family: Egypt;
-          font-size: 72pt;
+          font-size: 36pt;
           background-image: url('http://www.smartforest.com/images/papyrus.jpg');
           background-size: cover, cover;
           -webkit-border-radius: 10px;
@@ -36,17 +43,45 @@
       }
       #quote {
         font-size: 36pt;
-
       }
     </style>
     <script type="text/javascript">
-    var tablet = document.getElementById('tablet');
-    var oForm = document.forms[index];
+    var resultText = ""
 
-    var form = oForm.elements["textInput"];
-    function textChanged() {
-        tablet.innerHTML = form.value;
+    var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+    var egyptAlph = "AFSXBHUMBYTKIJEGTKPVEHEPBQ "
+    function start() {
+        var textArea = document.getElementById("textInput");
+        textArea.onkeyup = function () {
+            translateAdd(textArea.value);
+        }
     }
+    function translateAdd(text) {
+        var mydiv = document.getElementById("tablet");
+        var upText = text.toUpperCase();
+        resultText = "";
+        for (i=0; i<upText.length; i++) { 
+           var egyptChar;
+           var char = upText.charAt(i);
+           var numInNormal = alphabet.indexOf(char);
+
+           egyptChar = egyptAlph.charAt(numInNormal);
+           
+           resultText += egyptChar;
+	    }
+        if (resultText == "") {
+            resultText = "<br />";
+        }
+        tablet.innerHTML = resultText;
+        
+    }
+    function openWin() {
+        myWindow = window.open('', '', 'width=800,height=200');
+        myWindow.document.write("<style>@font-face { font-family: Egypt; src: url(\'http://www.smartforest.com/images/EGYPT0.TTF\'); } #tablet { border-style: solid; border-size: 1px; height: 300% margin: 10px 30px; line-height: 200%; vertical-align: middle; word-wrap: break-word; text-align: center; font-family: Egypt; font-size: 36pt; background-image: url('http://www.smartforest.com/images/papyrus.jpg'); background-size: cover, cover; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; }</style><div id=\"tablet\">"+resultText+"</div>");
+        myWindow.focus();
+        myWindow.print();
+    }
+
     </script>
 
     <!-- Le fav and touch icons -->
@@ -56,7 +91,7 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   </head>
 
-  <body>
+  <body onload="start()">
 
     <div class="topbar">
       <div class="topbar-inner">
@@ -74,26 +109,27 @@
         <div class="hero-unit">
           <h1>Papyrus</h1>
           <p>Text to hieroglyphs. Boom.</p>
-          <p><a class="btn success large" href="#form">Interested?</a></p>
         </div>
         <blockquote id="quote">
   <p>Words divested of their magic are but dead hieroglyphs.</p>
   <small>Henry Valentine Miller</small>
 </blockquote>
 <h3>So, what are these fancy Egyptian hieroglyphs?</h3>
-<p>Well, long story short, they were the pictografial writing system developed by the Ancient Egyptians thousands of years ago.  Pretty cool, no?</h3><br />
+<p>Well, long story short, they were the pictographic writing system developed by the Ancient Egyptians thousands of years ago. Pretty cool, no?</h3><br />
         <div class="span">
-            <h2>Scribe Your Incantation Here</h2>
-<form><textarea id="textInput" class="xxlarge"></textarea></form>            <p><a class="btn primary" href="javascript:textChanged()">Translate</a></p><br />
+            <h2>Enter Text for your Scribe to Translate</h2>
+<textarea id="textInput" class="xxlarge" autofocus="true"></textarea><br /><br />           <!-- <p><button class="btn primary" onclick="textChanged()">Translate</button></p>--><br />
           </div>
          <div id="tablet">
-         <br /><br /><br />AFS
+         <br />
          </div>
          <br />
+         <p><button class="btn success" onclick="openWin()">Print</button></p
          <br />
          
         <footer>
           <p>&copy; Alexander Mackworth 2011</p>
+          <p>Special thanks to all the javascript forums out there: this would not have been possible without you.
         </footer>
       </div>
     </div>
